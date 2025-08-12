@@ -42,12 +42,18 @@ int pop()
 	return(item);
 }
 
+void peek(){
+	if(check_empty())
+		printf("Stack is empty !!");
+	else
+		printf("Top element is %d\n", s[top-1]);
+}
 
 void main()
 {
 	int choice, n;
 	do{
-		printf("1: Push\n2: Pop\n3: Status\n4: Exit\n");
+		printf("1: Push\n2: Pop\n3: Peek\n4: Status\n5: Exit\n");
 		printf("Enter your choice: \n");
 		scanf("%d",&choice);
 		switch(choice)
@@ -66,7 +72,10 @@ void main()
 					printf("Popped element is %d\n",pop());
 				else
 					printf("Stack is empty\n");
-			case 3: if(check_full())
+				break;
+			case 3: peek();
+				break;
+			case 4: if(check_full())
 					printf("Stack is full\n");
 				else
 					if(check_empty())
@@ -74,10 +83,10 @@ void main()
 					else
 						printf("Memory available\n");
 				break;
-			case 4: printf("\nThank you!");
+			case 5: printf("\nThank you!");
 				break;
 			default: printf("Invalid input please try again.\n");
 		}
 		printf("\n");
-	} while(choice != 4);
+	} while(choice != 5);
 }
