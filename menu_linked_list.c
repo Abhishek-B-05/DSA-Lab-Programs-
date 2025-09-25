@@ -19,17 +19,23 @@ Node *newnode()
 
 int is_empty()
 {
-    if (head == NULL)
-        return 1;
-    return 0;
+    return(head == NULL);
 }
 
 void insert_begin(int val)
 {
     Node *p = newnode();
     p->info = val;
-    p->link = head;
-    head = p;
+    if(head == NULL)
+    {
+        head = tail = p;
+        p->link = NULL;
+    }
+    else
+    {
+        p->link = head;
+        head = p;
+    }
 }
 
 void insert_end(int val)
@@ -67,8 +73,8 @@ void insert_before(int val1,int val2)
     }
     else if(q == head)
     {
-        p->link = NULL;
-        head = tail = p;
+        p->link = q;
+        head = p;
     }
     else
     {
@@ -94,7 +100,8 @@ void insert_after(int val1,int val2)
     else if(q == head)
     {
         p->link = NULL;
-        head = tail = p;
+        tail = p;
+        q->link = p;
     }
     else
     {
@@ -143,7 +150,7 @@ void delete_node(int val)
         tail = q;
         tail->link = NULL;
     }
-    else 
+    else
     {
         q->link = p->link;
     }
