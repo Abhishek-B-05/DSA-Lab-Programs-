@@ -171,7 +171,7 @@ void delete_node(int val)
     printf("\nNode with value %d deleted successfully.\n", val);
 }
 
-void display()
+void display_from_head()
 {
     if (is_empty())
     {
@@ -188,6 +188,25 @@ void display()
     printf("NULL\n");
 }
 
+void display_from_tail()
+{
+    if (is_empty())
+    {
+        printf("\nList is empty\n");
+        return;
+    }
+    Node *p = tail;
+    printf("Queue: ");
+    printf("NULL");
+    while (p != NULL)
+    {
+        printf(" -> %d", p->info);
+        p = p->prev;
+    }
+    printf("\n");
+}
+
+
 void main()
 {
     int choice, val, val1, val2;
@@ -200,8 +219,9 @@ void main()
         printf("4. Insert After a Node\n");
         printf("5. Delete First Node\n");
         printf("6. Delete a Node\n");
-        printf("7. Display List\n");
-        printf("8. Exit\n");
+        printf("7. Display List From Head\n");
+        printf("8. Display List From Tail\n");
+        printf("9. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -243,13 +263,16 @@ void main()
             delete_node(val);
             break;
         case 7:
-            display();
+            display_from_head();
             break;
         case 8:
+            display_from_tail();
+            break;
+        case 9:
             printf("\nExiting...\n");
             break;
         default:
             printf("\nInvalid choice!\n");
         }
-    } while (choice != 8);
+    } while (choice != 9);
 }
