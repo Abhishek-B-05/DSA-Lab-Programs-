@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 struct node
 {
@@ -15,6 +16,7 @@ Node *tail = NULL;
 Node *newnode()
 {
     Node *p = (Node *)malloc(sizeof(Node));
+    p->next = p->prev = NULL;
     return p;
 }
 
@@ -26,22 +28,24 @@ int is_empty()
 void insert_begin(int val)
 {
     Node *p = newnode();
-    p->prev = NULL;
     p->info = val;
-    p->next = head;
-    head = p;
+    if(head == NULL)
+    	head = tail = p;
+    else
+    {
+    	p->next = head;
+    	head->prev = p;
+    	head = p;
+    }
 }
 
 void insert_end(int val)
 {
     Node *p = newnode();
     p->info = val;
-    p->next = NULL;
     if(head == NULL)
-    {
         head = tail = p;
-        p->prev = NULL;
-    }
+      
     else
     {
         tail->next = p;
@@ -61,7 +65,7 @@ void insert_before(int val1,int val2)
     }
     if(q == NULL)
     {
-        printf("Element %d not found in the list\n", val2);
+        printf("\nElement %d not found in the list\n", val2);
         free(p);
         return;
     }
@@ -92,7 +96,7 @@ void insert_after(int val1,int val2)
     }
     if(q == NULL)
     {
-        printf("List is empty\n");
+        printf("\nList is empty\n");
         return;
     }
     else if(q == head)
@@ -115,20 +119,28 @@ void delete_first()
 {
     if (is_empty())
     {
-        printf("List is empty\n");
+        printf("\nList is empty\n");
         return;
     }
     Node *p = head;
-    head = head->next;
-    head->prev = NULL;
+    if(head == tail)
+    {
+    	head = tail = NULL;
+    }
+    else
+    {
+    	head = head->next;
+    	head->prev = NULL;
+    }
     free(p);
+    printf("\nFirst node deleted successfully.\n");
 }
 
 void delete_node(int val)
 {
     if (is_empty())
     {
-        printf("List is empty\n");
+        printf("\nList is empty\n");
         return;
     }
     Node *p = head;
@@ -138,7 +150,7 @@ void delete_node(int val)
     }
     if (p == NULL)
     {
-        printf("Element %d not found in the list\n", val);
+        printf("\nElement %d not found in the list\n", val);
         return;
     }
     if(p == head)
@@ -156,16 +168,18 @@ void delete_node(int val)
         p->next->prev = p->prev;
     }
     free(p);
+    printf("\nNode with value %d deleted successfully.\n", val);
 }
 
 void display()
 {
     if (is_empty())
     {
-        printf("List is empty\n");
+        printf("\nList is empty\n");
         return;
     }
     Node *p = head;
+    printf("Queue: ");
     while (p != NULL)
     {
         printf("%d -> ", p->info);
@@ -179,7 +193,7 @@ void main()
     int choice, val, val1, val2;
     do
     {
-        printf("Menu:\n");
+        printf("\nMenu:\n");
         printf("1. Insert at Beginning\n");
         printf("2. Insert at End\n");
         printf("3. Insert Before a Node\n");
@@ -193,47 +207,49 @@ void main()
         switch (choice)
         {
         case 1:
-            printf("Enter the value to insert at beginning: ");
+            printf("\nEnter the value to insert at beginning: ");
             scanf("%d", &val);
             insert_begin(val);
+            printf("\nElement inserted successfully\n");
             break;
         case 2:
-            printf("Enter the value to insert at end: ");
+            printf("\nEnter the value to insert at end: ");
             scanf("%d", &val);
             insert_end(val);
+            printf("\nElement inserted successfully\n");
             break;
         case 3:
-            printf("Enter the value to insert: ");
+            printf("\nEnter the value to insert: ");
             scanf("%d", &val1);
-            printf("Enter the value before which to insert: ");
+            printf("\nEnter the value before which to insert: ");
             scanf("%d", &val2);
             insert_before(val1, val2);
+            printf("\nElement inserted successfully\n");
             break;
         case 4:
-            printf("Enter the value to insert: ");
+            printf("\nEnter the value to insert: ");
             scanf("%d", &val1);
-            printf("Enter the value after which to insert: ");
+            printf("\nEnter the value after which to insert: ");
             scanf("%d", &val2);
             insert_after(val1, val2);
+            printf("\nElement inserted successfully\n");
             break;
         case 5:
             delete_first();
-            printf("First node deleted successfully.\n");
             break;
         case 6:
-            printf("Enter the value of the node to delete: ");
+            printf("\nEnter the value of the node to delete: ");
             scanf("%d", &val);
             delete_node(val);
-            printf("Node with value %d deleted successfully.\n", val);
             break;
         case 7:
             display();
             break;
         case 8:
-            printf("Exiting...\n");
+            printf("\nExiting...\n");
             break;
         default:
-            printf("Invalid choice!\n");
+            printf("\nInvalid choice!\n");
         }
     } while (choice != 8);
 }
