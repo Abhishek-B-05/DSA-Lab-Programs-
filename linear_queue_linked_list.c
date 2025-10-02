@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 struct node
 {
@@ -36,13 +37,14 @@ void insert_rear(int val)
         rear->link = p;
         rear = p;
     }
+    printf("\nElement inserted successfully.\n");
 }
 
 void delete_front()
 {
     if (is_empty())
     {
-        printf("Queue is empty\n");
+        printf("\nQueue is empty\n");
         return;
     }
     Node *p = front;
@@ -50,26 +52,28 @@ void delete_front()
     if (front == NULL)
         rear = NULL;
     free(p);
+    printf("\nFront element deleted successfully.\n");
 }
 
 void peek()
 {
     if (is_empty())
     {
-        printf("Queue is empty\n");
+        printf("\nQueue is empty\n");
         return;
     }
-    printf("Front element is: %d\n", front->info);
+    printf("\nFront element is: %d\n", front->info);
 }
 
 void display()
 {
     if (is_empty())
     {
-        printf("Queue is empty\n");
+        printf("\nQueue is empty\n");
         return;
     }
     Node *p = front;
+    printf("\nQueue: ");
     while (p != NULL)
     {
         printf("%d -> ", p->info);
@@ -83,7 +87,7 @@ void main()
     int choice, val;
     do
     {
-        printf("Menu:\n");
+        printf("\nMenu:\n");
         printf("1. Insert at Rear\n");
         printf("2. Delete from Front\n");
         printf("3. Peek\n");
@@ -95,13 +99,12 @@ void main()
         switch (choice)
         {
         case 1:
-            printf("Enter the value to insert: ");
+            printf("\nEnter the value to insert: ");
             scanf("%d", &val);
             insert_rear(val);
             break;
         case 2:
             delete_front();
-            printf("Front element deleted successfully.\n");
             break;
         case 3:
             peek();
@@ -109,21 +112,21 @@ void main()
         case 4:
             if (is_empty())
             {
-                printf("Queue is empty\n");
+                printf("\nQueue is empty\n");
             }
             else
             {
-                printf("Queue is not empty\n");
+                printf("\nQueue is not empty\n");
             }
             break;
         case 5:
             display();
             break;
         case 6:
-            printf("Exiting...\n");
+            printf("\nExiting...\n");
             break;
         default:
-            printf("Invalid choice!\n");
+            printf("\nInvalid choice!\n");
         }
     } while (choice != 6);
 }
