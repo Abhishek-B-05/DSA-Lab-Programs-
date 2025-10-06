@@ -156,5 +156,5 @@ void main()
             default:
                 printf("Invalid choice!\n");
         }
-    } while (choice != 7);
+    } while (choice != 8);
 }
