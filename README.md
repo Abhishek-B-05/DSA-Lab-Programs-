@@ -74,6 +74,6 @@ This repository contains implementations of core **Data Structures and Algorithm
 ## 🧑‍💻 Author
 
 **Abhishek B**  
-💼 GitHub: [@Abhishek-B-05>](https://github.com/<Abhishek-B-05>)  
+💼 GitHub: [@Abhishek-B-05](https://github.com/<Abhishek-B-05>)  
 
 ---
