@@ -23,11 +23,11 @@ This repository contains implementations of core **Data Structures and Algorithm
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
+   git clone https://github.com/<Abhishek-B-05>/<DSA-Lab-Progrrams>.git
    ```
 2. Navigate into the project directory:
    ```bash
-   cd <your-repo-name>
+   cd <DSA-Lab-Progrrams>
    ```
 3. Compile any program (example for quick_sort.c):
    ```bash
