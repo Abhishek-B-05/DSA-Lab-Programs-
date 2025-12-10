@@ -91,7 +91,7 @@ This repository contains implementations of core **Data Structures and Algorithm
 
 **Abhishek B**  
 💼 GitHub: [@Abhishek-B-05](https://github.com/Abhishek-B-05)  
-📧 Email: *your.email@example.com*
+📧 Email: *abhishekb05cec@gmail.com*
 
 ---
 
