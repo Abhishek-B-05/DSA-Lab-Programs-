@@ -78,23 +78,9 @@ This repository contains implementations of core **Data Structures and Algorithm
 
 ---
 
-## 🚀 Future Additions
-
-- Graph algorithms (DFS, BFS)
-- Tree implementations (Binary Tree, BST)
-- Dynamic Memory management examples
-- Recursion-based solutions
-
----
 
 ## 🧑‍💻 Author
 
 **Abhishek B**  
 💼 GitHub: [@Abhishek-B-05](https://github.com/Abhishek-B-05)  
 📧 Email: *abhishekb05cec@gmail.com*
-
----
-
-## 🪪 License
-
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
